@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import colors from '../config/colors';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import HomeNavigator from './HomeNavigator';
+import ScheduleNavigator from './ScheduleNavigator';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -30,7 +31,7 @@ function AppNavigator() {
       />
       <Tab.Screen
         name="Horarios"
-        component={WelcomeScreen}
+        component={ScheduleNavigator}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <MaterialCommunityIcons
