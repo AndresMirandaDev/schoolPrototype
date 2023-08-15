@@ -9,7 +9,7 @@ import colors from '../../config/colors';
 const grades = [
   {
     id: 1,
-    name: 'Matematicas',
+    name: 'Matemáticas',
     grades: ['5.6', '5,0', '6,4', '4,6'],
     lottie: require('../../assets/animations/math.json'),
   },
@@ -33,31 +33,31 @@ const grades = [
   },
   {
     id: 5,
-    name: 'Fisica',
+    name: 'Física',
     grades: ['4.9', '7,0', '7,4', '4,6'],
     lottie: require('../../assets/animations/physics.json'),
   },
   {
     id: 6,
-    name: 'Quimica',
+    name: 'Química',
     grades: ['4.9', '4,0', '4,4', '6,6'],
     lottie: require('../../assets/animations/chemistry.json'),
   },
   {
     id: 7,
-    name: 'Educacion Fisica',
+    name: 'Educacion Física',
     grades: ['6.9', '7,0', '7,0', '7,0'],
     lottie: require('../../assets/animations/sports.json'),
   },
   {
     id: 8,
-    name: 'Musica',
+    name: 'Música',
     grades: ['6.9', '7,0', '5,9', '5,7'],
     lottie: require('../../assets/animations/music.json'),
   },
   {
     id: 9,
-    name: 'Idioma Extranjero Ingles',
+    name: 'Idioma Extranjero Inglés',
     grades: ['5,4', '6,7', '5,5', '5,4'],
     lottie: require('../../assets/animations/english.json'),
   },
