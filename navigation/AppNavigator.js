@@ -2,11 +2,11 @@ import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import HomeScreen from '../screens/HomeScreen';
 import colors from '../config/colors';
-import WelcomeScreen from '../screens/WelcomeScreen';
 import HomeNavigator from './HomeNavigator';
 import ScheduleNavigator from './ScheduleNavigator';
+
+import GradesNavigator from './GradesNavigator';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -27,6 +27,7 @@ function AppNavigator() {
               color={focused ? color : colors.light}
             />
           ),
+          tabBarColor: colors.danger,
         }}
       />
       <Tab.Screen
@@ -36,6 +37,19 @@ function AppNavigator() {
           tabBarIcon: ({ focused, color }) => (
             <MaterialCommunityIcons
               name="calendar"
+              size={20}
+              color={focused ? color : colors.light}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Notas"
+        component={GradesNavigator}
+        options={{
+          tabBarIcon: ({ focused, color }) => (
+            <MaterialCommunityIcons
+              name="comment-check"
               size={20}
               color={focused ? color : colors.light}
             />

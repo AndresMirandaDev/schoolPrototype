@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -24,8 +24,9 @@ export default function WelcomeScreen() {
           loop
         />
       </View>
+
       <View style={styles.title}>
-        <AppText style={styles.titleText}>EduSync</AppText>
+        <AppText style={styles.titleText}>RobySchool</AppText>
       </View>
     </View>
   );
@@ -72,5 +73,6 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 50,
     fontWeight: 'bold',
+    color: colors.primary,
   },
 });

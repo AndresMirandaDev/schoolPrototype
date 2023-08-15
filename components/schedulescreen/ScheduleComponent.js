@@ -1,8 +1,13 @@
-import { Button, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-import AppPicker from '../AppPicker';
+import { Button, FlatList, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+
 import AppForm from '../forms/AppForm';
 import AppFormPicker from '../forms/AppFormPicker';
+import SubmitButton from '../forms/SubmitButton';
+import AppText from '../AppText';
+import ScheduleListItem from './ScheduleListItem';
+import ListItemSeparator from '../ListItemSeparator';
+import colors from '../../config/colors';
 
 const horario = [
   {
@@ -93,21 +98,47 @@ const horario = [
 ];
 
 export default function ScheduleComponent() {
+  const [dayInDisplay, setDayInDisplay] = useState(horario[0]);
+
+  console.log(dayInDisplay);
+
+  const handleChange = ({ day }) => {
+    setDayInDisplay(day);
+  };
+
   return (
     <View style={styles.container}>
-      <AppForm
-        initialValues={{
-          day: '',
-        }}
-      >
-        <AppFormPicker
-          name="day"
-          placeholder="Escoge un dia"
-          icon="calendar"
-          items={horario}
+      <View style={styles.formContainer}>
+        <AppForm
+          initialValues={{
+            day: '',
+          }}
+          onSubmit={handleChange}
+        >
+          <AppFormPicker
+            name="day"
+            placeholder="Escoge un dia"
+            icon="calendar"
+            items={horario}
+          />
+          <SubmitButton title="Ver" />
+        </AppForm>
+      </View>
+      <View style={styles.listContainer}>
+        <View style={styles.dayNameContainer}>
+          <AppText style={styles.dayName}>{dayInDisplay.name}</AppText>
+        </View>
+        <FlatList
+          data={dayInDisplay.schedule}
+          keyExtractor={(item) => {
+            return item.hora;
+          }}
+          renderItem={({ item }) => {
+            return <ScheduleListItem day={item} />;
+          }}
+          ItemSeparatorComponent={ListItemSeparator}
         />
-      </AppForm>
-      <Button title="Buscar" />
+      </View>
     </View>
   );
 }
@@ -115,5 +146,17 @@ export default function ScheduleComponent() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  dayNameContainer: {},
+  dayName: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: colors.primary,
+  },
+  formContainer: {
+    padding: 10,
+  },
+  listContainer: {
+    alignSelf: 'center',
   },
 });

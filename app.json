@@ -3,6 +3,7 @@
     "name": "prototipoescuela",
     "slug": "prototipoescuela",
     "version": "1.0.0",
+    "owner": "aklass",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -25,6 +26,17 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "397c6000-ad92-44ba-add8-baf9e7473f34"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/397c6000-ad92-44ba-add8-baf9e7473f34"
     }
   }
 }
