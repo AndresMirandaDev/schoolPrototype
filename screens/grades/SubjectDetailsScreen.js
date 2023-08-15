@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import LottieView from 'lottie-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -55,6 +55,15 @@ export default function SubjectDetailsScreen({ route }) {
             {average}
           </AppText>
         </View>
+        <ScrollView style={styles.gradesContainer}>
+          {subject.grades.map((grade, index) => {
+            return (
+              <View key={index} style={styles.gradeContainer}>
+                <AppText style={styles.grade}>{grade}</AppText>
+              </View>
+            );
+          })}
+        </ScrollView>
       </View>
     </Screen>
   );
@@ -86,11 +95,25 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
+  grade: {
+    fontSize: 20,
+    color: colors.light,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  gradeContainer: {
+    padding: 10,
+    backgroundColor: colors.primary,
+    minWidth: '95%',
+    margin: 10,
+    borderRadius: 10,
+  },
   title: {
     fontSize: 30,
     fontWeight: 'bold',
     color: colors.primary,
     margin: 10,
+    textAlign: 'center',
   },
   titleContainer: {
     justifyContent: 'center',
