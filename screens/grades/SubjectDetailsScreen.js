@@ -59,6 +59,7 @@ export default function SubjectDetailsScreen({ route }) {
           {subject.grades.map((grade, index) => {
             return (
               <View key={index} style={styles.gradeContainer}>
+                <AppText style={styles.grade}>N {index + 1}</AppText>
                 <AppText style={styles.grade}>{grade}</AppText>
               </View>
             );
@@ -107,6 +108,8 @@ const styles = StyleSheet.create({
     minWidth: '95%',
     margin: 10,
     borderRadius: 10,
+    justifyContent: 'space-evenly',
+    flexDirection: 'row',
   },
   title: {
     fontSize: 30,

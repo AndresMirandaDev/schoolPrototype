@@ -1,13 +1,21 @@
 import { StyleSheet, View, Image } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import LottieView from 'lottie-react-native';
 import AppText from '../components/AppText';
 import colors from '../config/colors';
-import AppButton from '../components/AppButton';
+import AppForm from '../components/forms/AppForm';
+import AppFormField from '../components/forms/AppFormField';
+import SubmitButton from '../components/forms/SubmitButton';
+import { useUserContext } from '../userContext/UserContext';
 
-export default function WelcomeScreen({ navigation }) {
+export default function LoginScreen() {
+  const { updateUser } = useUserContext();
+
+  const handleLogin = (user) => {
+    updateUser(user);
+  };
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -26,15 +34,20 @@ export default function WelcomeScreen({ navigation }) {
         />
       </View>
 
-      <View style={styles.title}>
-        <AppText style={styles.titleText}>RobySchool</AppText>
-      </View>
-      <View style={styles.buttonContainer}>
-        <AppButton
-          title="login"
-          color="primary"
-          onPress={() => navigation.navigate('login')}
-        />
+      <View style={styles.formContainer}>
+        <AppForm
+          initialValues={{
+            rut: '',
+            password: '',
+          }}
+          onSubmit={handleLogin}
+        >
+          <AppFormField name="rut" placeholder="RUT" icon="account" />
+          <AppFormField name="password" placeholder="Contraseña" icon="lock" />
+          <View>
+            <SubmitButton title="Iniciar Sesión" color="primary" />
+          </View>
+        </AppForm>
       </View>
     </View>
   );
@@ -71,21 +84,16 @@ const styles = StyleSheet.create({
     right: 100,
     borderRadius: 200,
   },
-
-  buttonContainer: {
-    flex: 1,
-    width: '90%',
-  },
   container: {
     flex: 1,
     alignItems: 'center',
   },
-  title: {
-    flex: 1,
-  },
-  titleText: {
-    fontSize: 50,
-    fontWeight: 'bold',
-    color: colors.primary,
+  formContainer: {
+    flex: 2,
+    width: '90%',
+    padding: 20,
+    borderRadius: 20,
+    margin: 10,
+    justifyContent: 'center',
   },
 });

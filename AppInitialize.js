@@ -4,13 +4,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import { UserProvider, useUserContext } from './userContext/UserContext';
 import AppNavigator from './navigation/AppNavigator';
 import AuthNavigator from './navigation/AuthNavigator';
-import AppInitialize from './AppInitialize';
 
-export default function App() {
+export default function AppInitialize() {
+  const { user } = useUserContext();
+
   return (
-    <UserProvider>
-      <AppInitialize />
-    </UserProvider>
+    <NavigationContainer>
+      {!user ? <AuthNavigator /> : <AppNavigator />}
+    </NavigationContainer>
   );
 }
 
